@@ -2,6 +2,8 @@
 
 A comprehensive implementation guide for evaluating Large Language Models in production, covering RAG systems, adversarial testing, LLM judges, and content generation workflows.
 
+![](/E&O.png)
+
 ## Overview
 
 This repository contains practical implementations of LLM evaluation methodologies used in production systems. It demonstrates how to:
@@ -53,6 +55,8 @@ LLM evaluation falls into two buckets:
 - **Reference-based**: compare to known correct answers (ground truth).
 - **Reference-free**: assess quality/risk without a ground truth answer.
 
+![](/File2.jpg)
+
 ### Implementation
 **Reference-based**
 - Exact match (with normalization)
@@ -78,6 +82,8 @@ LLM evaluation falls into two buckets:
 
 ## 2) LLM Judges
 
+![](/File4.jpg)
+
 ### Concept
 Use one LLM to evaluate another model’s output against **explicit criteria**.
 
@@ -100,6 +106,8 @@ Scales human judgment into automated evaluators you can run continuously (CI + m
 ---
 
 ## 3) RAG System Evaluation
+
+![](/File3.jpg)
 
 ### Concept
 Evaluate RAG in two phases:
@@ -129,6 +137,8 @@ So fixes become targeted: chunking, top-K, reranking, or prompting.
 ---
 
 ## 4) AI Agents Evaluation
+
+![](/File8.jpg)
 
 ### Concept
 Agents are multi-step, tool-using, and non-deterministic. Evaluate **trajectory + tools**, not only the final answer.
