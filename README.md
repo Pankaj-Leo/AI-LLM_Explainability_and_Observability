@@ -23,23 +23,7 @@ This repository contains practical implementations of LLM evaluation methodologi
 
 ---
 
-## Project Structure
 
-```
-.
-├── notebooks/                      # Jupyter notebooks
-│   ├── LLM_Adversarial_Testing.ipynb
-│   ├── LLM_RAG_Evals.ipynb
-│   ├── LLM_judge_evals_methods.ipynb
-│   └── LLMCourse_Content_Generation_Evals.ipynb
-│
-├── markdown/                       # Markdown versions
-│   └── [converted notebooks]
-│
-└── README.md                      # This file
-```
-
----
 
 # LLM Evaluation Cheat Sheet (README Drop-In)
 
