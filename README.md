@@ -170,6 +170,57 @@ Prevents high-severity failures from shipping and provides repeatable hardening 
 - Pre-release gates + weekly regression runs
 
 ---
+## Monitoring Data Drift and Model Degradation
+
+**The Silent Killer:** Model drift doesn't announce itself. One week your demand forecasting model is accurate, three weeks later it's predicting negative bike rentals.
+
+**What Changes:**
+- **Data Drift**: Your input features evolve. Temperature patterns shift, user behavior changes seasonally, product mix rotates.
+- **Target Drift**: The thing you're predicting shifts distribution. Demand spikes during events, fraud patterns evolve.
+- **Model Drift**: Performance degrades as the relationship between features and target changes.
+
+**Real Example: Bicycle Demand Forecasting**
+
+Train a model on January 1-28 data:
+- MAE: 4.1 bikes
+- RMSE: 16.13
+- Error distribution: Symmetric ±20
+
+Week 1 data production (new data):
+- MAE: 13.4 bikes (3x worse)
+- RMSE: 40.8 (3x worse)
+- Error distribution: Widening
+
+Week 3 data production:
+- MAE: 24 bikes (6x worse)
+- RMSE: 111 (7x worse)
+- Error distribution: Skewed −50 to +50
+- Model predicting negative demand in some cases
+
+**What to Monitor:**
+
+1. **Performance Metrics**: Track MAE, RMSE, MAPE over time windows
+2. **Error Distribution**: Should stay symmetric; skew indicates bias
+3. **Prediction Scatter**: Predicted vs actual should stay tight
+4. **Feature Statistics**: Mean, variance, quantiles per feature
+5. **Target Distribution**: Is your output variable shifting?
+
+**Action Triggers:**
+- >50% MAE increase → Investigate
+- >100% RMSE increase → Retrain immediately
+- Error skew → Check for target drift
+- Prediction scatter widening → Data drift detected
+
+**Fix Strategy:**
+1. Combine reference + new production data
+2. Retrain on expanded dataset
+3. Validate on holdout from new period
+4. Establish new baseline
+5. Resume monitoring
+
+**Key Insight:** Drift is inevitable in production. The question isn't "if" but "when." Systematic monitoring catches degradation before business impact.
+
+
 
 ## Best Practices (Concise)
 
